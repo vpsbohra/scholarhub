@@ -47,7 +47,7 @@ export default function Register() {
         <Form layout="vertical" onFinish={onFinish}>
           <Form.Item label="Register as">
             <Select value={userType} onChange={setUserType}
-              options={[{value:'student',label:'Student'},{value:'donor',label:'Donor'}]} />
+              options={[{value:'student',label:'Student'}]} />
           </Form.Item>
 
           {userType === 'student' ? (

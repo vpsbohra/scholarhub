@@ -29,8 +29,8 @@ export default function AppLayout({ children }) {
         return [
             { key: '/dashboard/donor', icon: <DashboardOutlined/>, label: <Link to="/dashboard/donor">Dashboard</Link> },
             { key: '/profile/donor',   icon: <FileTextOutlined/>,  label: <Link to="/profile/donor">Organization Profile</Link> },
-            { key: '/scholarships/manage', icon: <BankOutlined/>,  label: <Link to="/scholarships/manage">Manage Scholarships</Link> },
-            { key: '/students', icon: <TeamOutlined/>, label: <Link to="/students">Students</Link> },
+            // { key: '/scholarships/manage', icon: <BankOutlined/>,  label: <Link to="/scholarships/manage">Manage Scholarships</Link> },
+            // { key: '/students', icon: <TeamOutlined/>, label: <Link to="/students">Students</Link> },
         ];
     }
     // admin / superadmin
