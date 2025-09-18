@@ -10,6 +10,8 @@ import DonorDashboard from './pages/dashboards/DonorDashboard';
 import AdminDashboard from './pages/dashboards/AdminDashboard';
 import StudentProfile from './pages/profile/StudentProfile';
 import DonorProfile   from './pages/profile/DonorProfile';
+import StudentList from './pages/admin/students/StudentList';
+import StudentDetail from './pages/admin/students/StudentDetail';
 
 function WithLayout({ children }) {
   return <AppLayout>{children}</AppLayout>;
@@ -48,6 +50,17 @@ export default function App() {
       <Route path="/profile/donor" element={
         <Protected allow={['donor']}>
           <AppLayout><DonorProfile/></AppLayout>
+        </Protected>
+      }/>
+
+      <Route path="/students" element={
+        <Protected allow={['admin','superadmin']}>
+          <AppLayout><StudentList/></AppLayout>
+        </Protected>
+      }/>
+      <Route path="/students/:id" element={
+        <Protected allow={['admin','superadmin']}>
+          <AppLayout><StudentDetail/></AppLayout>
         </Protected>
       }/>
       <Route path="*" element={<Navigate to="/login" replace />} />
