@@ -1,0 +1,13 @@
+.donor-table .ant-table-cell {
+  vertical-align: middle !important;
+  white-space: nowrap;
+}
+
+/* generic ellipsis helper */
+.ellipsis {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

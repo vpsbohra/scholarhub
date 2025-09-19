@@ -3,6 +3,7 @@ import { Card, Tabs, Form, Input, DatePicker, Select, Row, Col, Button, message,
 import { useParams } from 'react-router-dom';
 import dayjs from 'dayjs';
 import api from '../../../api/axios';
+import StudentDocumentsAdminTab from './StudentDocumentsAdminTab';
 
 const GENDERS = ['Male','Female','Other'];
 const CATS = ['General','OBC','SC','ST','Other'];
@@ -110,6 +111,11 @@ export default function StudentDetail() {
             key: 'applications',
             label: 'Applications',
             children: <StudentApplications studentId={id} columns={appColumns} />
+          },
+          {
+            key: 'documents',
+            label: 'Documents',
+            children: <StudentDocumentsAdminTab studentId={id} />
           }
         ]}
       />

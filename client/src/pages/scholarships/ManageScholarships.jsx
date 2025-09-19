@@ -8,6 +8,7 @@ const STATUSES = ['draft','active','closed','archived'];
 export default function ManageScholarships() {
   const role = localStorage.getItem('role');
   const [data,setData] = useState([]);
+  const [csrDonors,setcsrDonors] = useState([]);
   const [total,setTotal] = useState(0);
   const [loading,setLoading] = useState(false);
   const [page,setPage] = useState(1);
@@ -22,11 +23,14 @@ export default function ManageScholarships() {
     setLoading(true);
     try {
       const params = { page:p, pageSize:ps, search:s || undefined, status: st || undefined };
+      const csrDonorsdata = await api.get('/admin/donors', { params:{ page:p, pageSize:ps, search:s||undefined } });
+      setcsrDonors(csrDonorsdata.data.data);
       if (role==='donor') params.owner = 'me';
       const { data } = await api.get('/scholarships', { params });
       setData(data.data); setTotal(data.total); setPage(data.page); setPageSize(data.pageSize);
     } finally { setLoading(false); }
   }
+
   useEffect(()=>{ load(); }, []);
 
   function openCreate() {
@@ -44,6 +48,7 @@ export default function ManageScholarships() {
     setOpen(true);
   }
 
+  console.log('csrDonors =======',csrDonors);
   async function onSubmit() {
     const v = await form.validateFields();
     const payload = {
@@ -131,8 +136,8 @@ export default function ManageScholarships() {
             <Select options={STATUSES.map(v=>({value:v,label:v}))}/>
           </Form.Item>
           {role !== 'donor' && (
-            <Form.Item name="donor_id" label="Donor ID (optional for admin)">
-              <InputNumber style={{width:'100%'}} min={1}/>
+            <Form.Item name="donor_id" label="Donor ID" rules={[{required:true}]}>
+              <Select options={csrDonors.map(v=>({value:v.donor_id,label:v.organization_name}))} />
             </Form.Item>
           )}
         </Form>

@@ -37,7 +37,7 @@ export default function AppLayout({ children }) {
     return [
       { key: '/dashboard/admin', icon: <DashboardOutlined/>, label: <Link to="/dashboard/admin">Dashboard</Link> },
       { key: '/scholarships/manage', icon: <BankOutlined/>, label: <Link to="/scholarships/manage">Manage Scholarships</Link> },
-      { key: '/donors', icon: <TeamOutlined/>, label: <Link to="/donors">Donors</Link> },
+      { key: '/donors', icon: <TeamOutlined/>, label: <Link to="/donors">CSR Donors</Link> },
       { key: '/students', icon: <TeamOutlined/>, label: <Link to="/students">Students</Link> },
       { key: '/applications/admin', icon: <FileTextOutlined/>, label: <Link to="/applications/admin">Applications</Link> },
     ];

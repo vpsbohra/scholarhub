@@ -14,6 +14,8 @@ import StudentList from './pages/admin/students/StudentList';
 import StudentDetail from './pages/admin/students/StudentDetail';
 import Scholarships from './pages/scholarships/Scholarships';
 import ManageScholarships from './pages/scholarships/ManageScholarships';
+import DonorList from './pages/admin/donors/DonorList';
+import DonorDetail from './pages/admin/donors/DonorDetail';
 
 function WithLayout({ children }) {
   return <AppLayout>{children}</AppLayout>;
@@ -76,6 +78,18 @@ export default function App() {
           <AppLayout><ManageScholarships/></AppLayout>
         </Protected>
       }/>
+
+      <Route path="/donors" element={
+        <Protected allow={['admin','superadmin']}>
+          <AppLayout><DonorList/></AppLayout>
+        </Protected>
+      }/>
+      <Route path="/donors/:id" element={
+        <Protected allow={['admin','superadmin']}>
+          <AppLayout><DonorDetail/></AppLayout>
+        </Protected>
+      }/>
+
       <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, Form, Input, Select, Button, message, Divider } from 'antd';
+import { Card, Form, Input, Select, Button, message, Divider, Typography } from 'antd';
 import { GoogleLogin } from '@react-oauth/google';
 import api from '../api/axios';
 
@@ -66,6 +66,9 @@ export default function Register() {
           <Form.Item label="Password" name="password" rules={[{ required: true, min: 6 }]}><Input.Password/></Form.Item>
 
           <Button type="primary" htmlType="submit" loading={loading} block>Create account</Button>
+          <Typography.Paragraph style={{ marginTop: 10 }}>
+            Already have account? <a href="/login">Login</a>
+          </Typography.Paragraph>
         </Form>
 
         <Divider>or</Divider>
