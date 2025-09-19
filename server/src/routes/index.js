@@ -9,4 +9,5 @@ router.use('/api', authRoutes);
 router.use('/api/profile', profileRoutes);
 router.use('/api/admin', adminRoutes);
 router.use('/api', scholarshipRoutes);
+
 module.exports = router;
